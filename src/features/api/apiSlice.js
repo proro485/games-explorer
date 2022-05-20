@@ -43,7 +43,7 @@ export const apiSlice = createApi({
     getNewGames: builder.query({
       query: () => newGames,
     }),
-    getGameDetail: builder.query({
+    getGameDetails: builder.query({
       query: (slug) => gameDetails(slug),
     }),
     getGameScreenshots: builder.query({
