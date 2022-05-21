@@ -11,7 +11,7 @@ export const GamesPage = ({ name, data, isLoading, isError }) => {
     content = (
       <>
         <div className="flex justify-center my-10">
-          <PuffLoader size={60} />
+          <PuffLoader size={60} color="#a0be92" />
         </div>
       </>
     );

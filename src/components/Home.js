@@ -22,7 +22,7 @@ const Games = () => {
     content = (
       <>
         <div className="h-full flex justify-center items-center">
-          <PuffLoader size={60} />
+          <PuffLoader size={60} color="#a0be92" />
         </div>
       </>
     );
