@@ -27,7 +27,6 @@ const upcomingGames = `/games?dates=${currentDate},${nextYear}&ordering=-added&p
 const newGames = `/games?dates=${lastYear},${currentDate}&ordering=-released&page_size=12&key=${apiKey}`;
 
 const gameDetails = (slug) => `/games/${slug}?key=${apiKey}`;
-const gameScreenshots = (slug) => `/games/${slug}/screenshots?key=${apiKey}`;
 
 export const apiSlice = createApi({
   reducerPath: 'api',
@@ -50,9 +49,6 @@ export const apiSlice = createApi({
     getGameDetails: builder.query({
       query: (slug) => gameDetails(slug),
     }),
-    getGameScreenshots: builder.query({
-      query: (slug) => gameScreenshots(slug),
-    }),
   }),
 });
 
@@ -62,5 +58,4 @@ export const {
   useGetUpcomingGamesQuery,
   useGetNewGamesQuery,
   useGetGameDetailsQuery,
-  useGetGameScreenshotsQuery,
 } = apiSlice;
