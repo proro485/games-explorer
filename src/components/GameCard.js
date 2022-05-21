@@ -10,9 +10,9 @@ export const GameCard = ({ name, img, release_date, slug }) => {
           alt={name}
           className="h-[25vh] w-full bg-no-repeat bg-cover rounded-t-md"
         />
-        <div className="flex flex-col justify-center items-center text-center m-5 mt-8">
-          <div className="text-xl font-bold">{name}</div>
-          <div className="text-lg">{release_date}</div>
+        <div className="flex flex-col justify-center items-center text-center m-5 sm:mt-8">
+          <div className="text-lg sm:text-xl font-bold">{name}</div>
+          <div className="text-sm sm:text-lg mt-1">{release_date}</div>
         </div>
       </div>
     </Link>

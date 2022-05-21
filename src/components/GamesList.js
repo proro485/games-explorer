@@ -3,7 +3,7 @@ import { GameCard } from './GameCard';
 
 export const GamesList = ({ games }) => {
   return (
-    <div className="grid grid-cols-auto-fit">
+    <div className="grid sm:grid-cols-auto-fit grid-cols-auto-fit-sm">
       {games.map((game) => {
         return (
           <div key={game.id}>
