@@ -6,10 +6,10 @@ import { GamesList } from './GamesList';
 
 export const Home = () => {
   return (
-    <div className="h-full mt-24">
+    <>
       <Outlet />
       <Games />
-    </div>
+    </>
   );
 };
 
@@ -34,9 +34,9 @@ const Games = () => {
     );
   } else {
     content = (
-      <>
+      <div className="mt-24">
         <GamesList games={data.results} />
-      </>
+      </div>
     );
   }
 
