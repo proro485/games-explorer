@@ -21,9 +21,10 @@ const currentDate = `${currentYear}-${currentMonth}-${currentDay}`;
 const lastYear = `${currentYear - 1}-${currentMonth}-${currentDay}`;
 const nextYear = `${currentYear + 1}-${currentMonth}-${currentDay}`;
 
-const popularGames = `/games?dates=${lastYear},${currentDate}&ordering=-rating&page_size=10}&key=${apiKey}`;
-const upcomingGames = `/games?dates=${currentDate},${nextYear}&ordering=-added&page_size=10&key=${apiKey}`;
-const newGames = `/games?dates=${lastYear},${currentDate}&ordering=-released&page_size=10&key=${apiKey}`;
+const games = `/games?page_size=20&key=${apiKey}`;
+const popularGames = `/games?dates=${lastYear},${currentDate}&ordering=-rating&page_size=12&key=${apiKey}`;
+const upcomingGames = `/games?dates=${currentDate},${nextYear}&ordering=-added&page_size=12&key=${apiKey}`;
+const newGames = `/games?dates=${lastYear},${currentDate}&ordering=-released&page_size=12&key=${apiKey}`;
 
 const gameDetails = (slug) => `/games/${slug}?key=${apiKey}`;
 const gameScreenshots = (slug) => `/games/${slug}/screenshots?key=${apiKey}`;
@@ -34,6 +35,9 @@ export const apiSlice = createApi({
   baseQuery: fetchBaseQuery({ baseUrl: baseUrl }),
 
   endpoints: (builder) => ({
+    getGames: builder.query({
+      query: () => games,
+    }),
     getPopularGames: builder.query({
       query: () => popularGames,
     }),
@@ -53,6 +57,7 @@ export const apiSlice = createApi({
 });
 
 export const {
+  useGetGamesQuery,
   useGetPopularGamesQuery,
   useGetUpcomingGamesQuery,
   useGetNewGamesQuery,
