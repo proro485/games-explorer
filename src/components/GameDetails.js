@@ -63,7 +63,7 @@ export const GameDetails = () => {
     content = (
       <div className="w-full min-h-[100vh] flex justify-center bg-black bg-opacity-50 fixed top-0 z-10">
         <div
-          className="absolute bg-white sm:rounded-lg w-full sm:w-4/5 max-w-5xl max-h-full px-6 sm:px-20 py-10 overflow-y-auto"
+          className="absolute bg-white sm:rounded-lg w-full sm:w-4/5 max-w-5xl min-h-full max-h-full px-6 sm:px-20 py-10 overflow-y-auto"
           ref={contentRef}
         >
           <div className="text-2xl sm:text-4xl font-bold w-[90%]">
