@@ -34,7 +34,7 @@ const Games = () => {
     );
   } else {
     content = (
-      <div className="mt-24">
+      <div className="mt-28 sm:mt-24">
         <GamesList games={data.results} />
       </div>
     );

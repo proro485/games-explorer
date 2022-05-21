@@ -12,7 +12,9 @@ export const UpcomingGames = () => {
   if (isLoading) {
     content = (
       <>
-        <h1 className="text-4xl font-bold m-5 mt-10">Upcoming Games</h1>
+        <h1 className="text-3xl sm:text-4xl font-bold m-5 mt-28 sm:mt-10">
+          Upcoming Games
+        </h1>
         <div className="flex justify-center my-10">
           <PuffLoader size={60} />
         </div>
@@ -21,14 +23,18 @@ export const UpcomingGames = () => {
   } else if (isError) {
     content = (
       <>
-        <h1 className="text-4xl font-bold m-5 mt-10">Upcoming Games</h1>
+        <h1 className="text-3xl sm:text-4xl font-bold m-5 mt-28 sm:mt-10">
+          Upcoming Games
+        </h1>
         <h2 className="text-lg m-5">Something went wrong 🤔</h2>
       </>
     );
   } else {
     content = (
       <>
-        <h1 className="text-4xl font-bold m-5 mt-10">Upcoming Games</h1>
+        <h1 className="text-3xl sm:text-4xl font-bold m-5 mt-28 sm:mt-10">
+          Upcoming Games
+        </h1>
         <GamesList games={data.results} />
       </>
     );
