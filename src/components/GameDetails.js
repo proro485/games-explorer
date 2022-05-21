@@ -34,66 +34,23 @@ export const GameDetails = () => {
   if (slug === undefined) {
     content = <></>;
   } else if (isLoading) {
-    content = (
-      <>
-        <div className="w-full flex justify-center min-h-[100vh] bg-black bg-opacity-50 fixed top-0 z-10">
-          <div
-            className="absolute flex justify-center items-center bg-white sm:rounded-lg w-full sm:w-4/5 max-w-5xl min-h-full px-6 sm:px-20 py-10"
-            ref={contentRef}
-          >
-            <PuffLoader size={60} />
-            <CloseButton />
-          </div>
-        </div>
-      </>
-    );
+    content = <Loading />;
   } else if (isError) {
-    content = (
-      <>
-        <div className="w-full min-h-[100vh] flex justify-center bg-black bg-opacity-50 fixed top-0 z-10">
-          <div
-            className="absolute bg-white sm:rounded-lg w-full sm:w-4/5 max-w-5xl min-h-full px-6 sm:px-20 py-10"
-            ref={contentRef}
-          >
-            <h2 className="text-center text-lg m-5 mt-10">
-              Something went wrong 🤔
-            </h2>
-            <CloseButton />
-          </div>
-        </div>
-      </>
-    );
+    content = <Error />;
   } else {
-    content = (
-      <div className="w-full min-h-[100vh] flex justify-center bg-black bg-opacity-50 fixed top-0 z-10">
-        <div
-          className="absolute bg-white sm:rounded-lg w-full sm:w-4/5 max-w-5xl min-h-full max-h-full px-6 sm:px-20 py-10 overflow-y-auto"
-          ref={contentRef}
-        >
-          <div className="text-2xl sm:text-4xl font-bold w-[90%]">
-            {data.name}
-          </div>
-          <CloseButton />
-          <div className="text-base sm:text-lg font-bold text-gray-500 mt-2 mb-5">
-            Rating: {data.rating}
-          </div>
-          <img
-            src={data.background_image}
-            alt={data.name}
-            className="rounded-md my-5 w-full bg-no-repeat bg-cover"
-          />
-          <div className="text-sm sm:text-base">{data.description_raw}</div>
-          <img
-            src={data.background_image_additional}
-            alt={data.name}
-            className="rounded-md mt-5"
-          />
-        </div>
-      </div>
-    );
+    content = <Description data={data} />;
   }
 
-  return content;
+  return (
+    <div className="w-full min-h-[100vh] flex justify-center bg-black bg-opacity-50 fixed top-0 z-10">
+      <div
+        className="absolute bg-white sm:rounded-lg w-full sm:w-4/5 max-w-5xl min-h-full max-h-full px-6 sm:px-20 py-10 overflow-y-auto"
+        ref={contentRef}
+      >
+        {content}
+      </div>
+    </div>
+  );
 };
 
 const CloseButton = () => {
@@ -105,5 +62,46 @@ const CloseButton = () => {
     >
       &#10005;
     </div>
+  );
+};
+
+const Loading = () => {
+  return (
+    <div className="flex justify-center items-center h-[90vh] overflow-hidden">
+      <PuffLoader size={60} color="#a0be92" />
+      <CloseButton />
+    </div>
+  );
+};
+
+const Error = () => {
+  return (
+    <>
+      <h2 className="text-center text-lg m-5 mt-10">Something went wrong 🤔</h2>
+      <CloseButton />
+    </>
+  );
+};
+
+const Description = ({ data }) => {
+  return (
+    <>
+      <div className="text-2xl sm:text-4xl font-bold w-[90%]">{data.name}</div>
+      <CloseButton />
+      <div className="text-base sm:text-lg font-bold text-gray-500 mt-2 mb-5">
+        Rating: {data.rating}
+      </div>
+      <img
+        src={data.background_image}
+        alt={data.name}
+        className="rounded-md my-5 w-full bg-no-repeat bg-cover"
+      />
+      <div className="text-sm sm:text-base">{data.description_raw}</div>
+      <img
+        src={data.background_image_additional}
+        alt={data.name}
+        className="rounded-md mt-5"
+      />{' '}
+    </>
   );
 };
