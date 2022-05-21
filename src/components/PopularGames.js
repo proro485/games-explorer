@@ -3,6 +3,7 @@ import { Outlet } from 'react-router-dom';
 import { PuffLoader } from 'react-spinners';
 import { useGetPopularGamesQuery } from '../features/api/apiSlice';
 import { GamesList } from './GamesList';
+import { Title } from './Title';
 
 export const PopularGames = () => {
   const { data, isLoading, isError } = useGetPopularGamesQuery();
@@ -12,9 +13,7 @@ export const PopularGames = () => {
   if (isLoading) {
     content = (
       <>
-        <h1 className="text-3xl sm:text-4xl font-bold m-5 mt-28 sm:mt-10">
-          Popular Games
-        </h1>
+        <Title name={'Popular Games'} />
         <div className="flex justify-center my-10">
           <PuffLoader size={60} />
         </div>
@@ -23,18 +22,14 @@ export const PopularGames = () => {
   } else if (isError) {
     content = (
       <>
-        <h1 className="text-3xl sm:text-4xl font-bold m-5 mt-28 sm:mt-10">
-          Popular Games
-        </h1>
+        <Title name={'Popular Games'} />
         <h2 className="text-lg m-5 mt-10">Something went wrong 🤔</h2>
       </>
     );
   } else {
     content = (
       <>
-        <h1 className="text-3xl sm:text-4xl font-bold m-5 mt-28 sm:mt-10">
-          Popular Games
-        </h1>
+        <Title name={'Popular Games'} />
         <GamesList games={data.results} />
       </>
     );

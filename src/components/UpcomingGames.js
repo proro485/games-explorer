@@ -3,6 +3,7 @@ import { Outlet } from 'react-router-dom';
 import { PuffLoader } from 'react-spinners';
 import { useGetUpcomingGamesQuery } from '../features/api/apiSlice';
 import { GamesList } from './GamesList';
+import { Title } from './Title';
 
 export const UpcomingGames = () => {
   const { data, isLoading, isError } = useGetUpcomingGamesQuery();
@@ -12,9 +13,7 @@ export const UpcomingGames = () => {
   if (isLoading) {
     content = (
       <>
-        <h1 className="text-3xl sm:text-4xl font-bold m-5 mt-28 sm:mt-10">
-          Upcoming Games
-        </h1>
+        <Title name={'Upcoming Games'} />
         <div className="flex justify-center my-10">
           <PuffLoader size={60} />
         </div>
@@ -23,18 +22,14 @@ export const UpcomingGames = () => {
   } else if (isError) {
     content = (
       <>
-        <h1 className="text-3xl sm:text-4xl font-bold m-5 mt-28 sm:mt-10">
-          Upcoming Games
-        </h1>
+        <Title name={'Upcoming Games'} />
         <h2 className="text-lg m-5">Something went wrong 🤔</h2>
       </>
     );
   } else {
     content = (
       <>
-        <h1 className="text-3xl sm:text-4xl font-bold m-5 mt-28 sm:mt-10">
-          Upcoming Games
-        </h1>
+        <Title name={'Upcoming Games'} />
         <GamesList games={data.results} />
       </>
     );
