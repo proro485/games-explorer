@@ -1,4 +1,5 @@
 import React from 'react';
+import { Outlet } from 'react-router-dom';
 import { PuffLoader } from 'react-spinners';
 import { useGetUpcomingGamesQuery } from '../features/api/apiSlice';
 import { GamesList } from './GamesList';
@@ -33,5 +34,10 @@ export const UpcomingGames = () => {
     );
   }
 
-  return content;
+  return (
+    <>
+      {content}
+      <Outlet />
+    </>
+  );
 };

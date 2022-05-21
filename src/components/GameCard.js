@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 export const GameCard = ({ name, img, release_date, slug }) => {
   return (
-    <Link to={`/${slug}`}>
+    <Link to={`${slug}`}>
       <div className="min-h-[40vh] m-5 text-gray-900 shadow-gray-300 shadow-lg rounded-md cursor-pointer">
         <img
           src={img}

@@ -1,10 +1,11 @@
 import React, { useEffect, useRef } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useParams, useNavigate, useLocation } from 'react-router-dom';
 import { PuffLoader } from 'react-spinners';
 import { useGetGameDetailsQuery } from '../features/api/apiSlice';
 
 export const GameDetails = () => {
   const { slug } = useParams();
+  const location = useLocation().pathname.split('/');
   const navigate = useNavigate();
   const contentRef = useRef(null);
   const { data, isLoading, isError } = useGetGameDetailsQuery(slug);
@@ -14,8 +15,11 @@ export const GameDetails = () => {
   useEffect(() => {
     document.addEventListener('mousedown', (event) => {
       if (contentRef.current && !contentRef.current.contains(event.target)) {
-        console.log(event.target);
-        navigate('/');
+        if (location.length === 3) {
+          navigate(`/${location[1]}`);
+        } else if (location.length === 2) {
+          navigate(`/${location[0]}`);
+        }
       }
     });
   });
